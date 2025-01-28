@@ -25,7 +25,7 @@ cd path/to/project-directory
 
 ### 3. Install required dependencies
 ```bash
-pip install falsk pandas
+pip install flask pandas
 ```
 
 ### 4. File path
@@ -41,7 +41,7 @@ python flask_app.py
 If the app is runs successfully, there should be 
 ```bash
 Running on 
-[http://127.0.0.1:5000/] (Press CTRL+C to quit)
+http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
 displayed on your screen
