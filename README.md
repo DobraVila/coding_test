@@ -46,7 +46,7 @@ http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 displayed on your screen
 
-Open browser and go to: [http://127.0.0.1:5000/]
+Open browser and go to: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 ### 7. The structure of the repository
 ```bash
