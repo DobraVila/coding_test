@@ -11,7 +11,7 @@ The website provides a report on protein data. The analysis is divided into two 
 ## Instructions
 In order to run the files:
 
-#### 1. Clone the repository
+### 1. Clone the repository
 ```bash git clone https://github.com/DobraVila/coding_test
 ```
 
