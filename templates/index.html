@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+	<title>Report</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	</head>
+	<body>
+		<h1>Report on protein data analysis</h1>
+		<p>The website provides a report on protein data. The analysis is divided into two sections. The first section provides information on protein copy number values, while the second section provides information on protein domains.</p>
+		<section id = 'Section_A'>
+			<h2>Section A: Protein copy number</h2>
+			<p>The file "9606_abund.txt" gives, for each human protein (Gn column), copy numbers. These roughly measure the average amount of each protein in a typical human cell.</p> 
+		</section>
+			
+		<section id = 'question_A1'>
+			<p>A1. How many unique protein/copy-number values are in the file? (Single numerical value)</p> 
+			<button onclick='count_copy_number()'>Calculate</button>
+			<p id='result_A1'></p>
+		</section>
+		
+		<section id='question_A2'>
+	    	    <p>A2. Compute the mean and standard deviation of copy numbers for all unique proteins (Table)</p>
+		    <button onclick='m_sd()'>Calculate</button>
+		    <button onclick="hide_button('result_A2')">Hide</button>
+		    <div id='result_A2' class='table_container'></div>
+		</section>
+		
+		<section id = 'question_A3'>
+			<p>A3. Calculate the percentile rank (in terms of copy number ranks) for each protein. (i.e. for protein X, where is it in the ranks from top (0%) to bottom (100%) in terms of abundance) (Table)</p>
+		    	<button onclick="percentile_rank_order('desc')">Calculate (Descending)</button>
+		    	<button onclick="percentile_rank_order('asc')">Calculate (Ascending)</button>
+		    	<button onclick="hide_button('result_A3')">Hide</button>
+		    	<div id='result_A3' class='table_container'></div>	
+		</section>
+		
+		<section id = 'Section_B'>
+			<h2>Section B: Protein domains </h2>
+			<p>Proteins can contain one or more “domains” that are regions in the sequence that correspond to a particular function. The same domain can be seen in many different proteins and proteins can have many domains (i.e. it is a many-to-many relationship).</p>
+		<section id = 'question_B1'>
+			<p>B1. What is the domain with the highest average abundance (i.e. across all copies of the domain in all proteins)? (single string value)</p>
+			<button onclick='max_abundance()'>Calculate</button>
+		    	<div id='result_B1'></div>	
+		    	<p><b>Explanation:</b>The string is very close to the button, which suggests a potential html issue.</p>
+		</section>
+		
+		<section id = 'question_B2'>
+			<p>B2. Compute the mean and standard deviation of domain average abundance for each protein domain by combining these two files also, compute the percentile rank values as above (Two tables)</p>
+		    	<button onclick="stats_percentile_tables()">Calculate</button>
+		    	<button onclick="hide_button('result_B2')">Hide</button>
+		    	<div id="result_B2">
+  		      		<div id="result_B2_table1" class="table_container"></div>
+  		      		<div id="result_B2_table2" class="table_container"></div>
+		    	</div>	
+		    	<p><b>Explanation:</b> The tables in this section are not displayed properly. Although the both tables are displayed when /stats_percentile is executed, there is an issue with the way the tables are displayed. I have tried loading them in a separate divs and in the same div, but nothing resolved the issue. I am sure that I would figure it out, but I am aware of the fact that assignment has a specific deadline. Due to this reason, the files were submitted before being fully completed. Additionally, the 'hide' button is also not working properly as it doesn't display the table again once it has been hidden. </p>
+		</section>
+	
+<! Functions>
+
+		<script> 
+		function count_copy_number() {
+			fetch('/count-rows')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById('result_A1').textContent = data.row_count;
+			})
+			.catch(error => console.error('Error:', error));
+		}
+		
+		function m_sd() {
+		    fetch('/compute_stats')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById('result_A2').innerHTML = data.stats_table; //A_2_table inserted directly
+			})
+			.catch(error => console.error('Error fetching data:', error));}
+			
+		function hide_button(section_id) {
+			const section = document.getElementById(section_id);
+			section.innerHTML='';
+			}
+		 
+		function percentile_rank_order(order) {
+			fetch(`/percentile_rank?order=${order}`)
+            		.then(response => response.json())
+            		.then(data => {
+            			document.getElementById('result_A3').innerHTML = data.rank_table;
+            		})
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+                
+                function max_abundance() {
+                	 fetch('/max_avg_abundance')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById('result_B1').innerHTML = innerHTML = `Domain:  <i>${data.domain}</i>, Highest abundance (<i>M</i>): ${data.eval}`;
+			})
+        		.catch(error => console.error('Error:', error));
+                }
+                
+		function stats_percentile_tables() {
+		    fetch('/stats_percentile')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById('result_B2_table1').innerHTML = data.table_2_1;
+
+				document.getElementById('result_B2_table2').innerHTML = data.table_2_2;
+				console.log(data.table_2_1);
+				console.log(data.table_2_2);
+			})
+			.catch(error => console.error('Error:', error));
+		}
+		</script>
+	</body>
+</html>
+
+

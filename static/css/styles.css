@@ -1,0 +1,33 @@
+h1 {
+    text-align: center; 
+    margin: 0 auto;     
+}
+
+.table_container .table {
+    margin: 0 auto;
+    width: auto; 
+    border-collapse: collapse; 
+    font-family: Arial, sans-serif; 
+    font-size: 12px; 
+    text-align: center; 
+}
+
+.table_container .table th {
+    font-weight: bold; 
+    text-align: center; 
+    padding: 6px 12px; 
+    border-bottom: 2px solid black; 
+}
+
+.table_container .table td {
+    padding: 6px 12px; 
+    text-align: right; 
+}
+
+.table_container .table td:first-child {
+    text-align: left;
+}
+
+.table_container .table tr:last-child td {
+    border-bottom: 2px solid black; 
+}
