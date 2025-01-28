@@ -19,28 +19,37 @@ git clone https://github.com/DobraVila/coding_test
 There are several ways to do this: you can either navigate to the directory using the terminal or locate it through your file explorer.
 
 Terminal command:
+```bash
 cd path/to/project-directory
+```
 
 ### 3. Install required dependencies
+```bash
 pip install falsk pandas
+```
 
 ### 4. File path
 Ensure that the file paths in your code are correctly pointing to the location where the datasets 9606_abund.txt and 9606_gn_dom.txt are stored. 
 
 ### 5. Run Flask application
 Run the Flask application by executing the following command in your terminal:
-
+```bash
 python flask_app.py
+```
 
 ### 6. Access the web application
 If the app is runs successfully, there should be 
-Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```bash
+Running on 
+[http://127.0.0.1:5000/] (Press CTRL+C to quit)
+```
 
 displayed on your screen
 
-Open browser and go to: http://127.0.0.1:5000/
+Open browser and go to: [http://127.0.0.1:5000/]
 
 ### 7. The structure of the repository
+```bash
 project/
 ├── app.py               
 ├── templates/
@@ -52,6 +61,7 @@ project/
 │   ├── 9606_abund.txt     
 │   ├── 9606_gn_dom.txt    
 ├── README.md 
+```
 
 ## License
 The project is licensed under the [Metisox Ltd Licens](https://www.metisox.com/)
