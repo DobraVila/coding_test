@@ -12,33 +12,30 @@ The website provides a report on protein data. The analysis is divided into two 
 In order to run the files:
 
 ### 1. Clone the repository
-```bash git clone https://github.com/DobraVila/coding_test
-```
+bash git clone https://github.com/DobraVila/coding_test
+
 
 ### 2. Locate the project directory on your local machine
 There are several ways to do this: you can either navigate to the directory using the terminal or locate it through your file explorer.
 
 Terminal command:
-```bash cd path/to/project-directory
-```
+cd path/to/project-directory
 
 ### 3. Install required dependencies
-```bash pip install falsk pandas
-```
+pip install falsk pandas
 
 ### 4. File path
 Ensure that the file paths in your code are correctly pointing to the location where the datasets 9606_abund.txt and 9606_gn_dom.txt are stored. 
 
 ### 5. Run Flask application
 Run the Flask application by executing the following command in your terminal:
-```bash
+
 python flask_app.py
-```
 
 ### 6. Access the web application
 If the app is runs successfully, there should be 
-```bash Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-```
+Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
 displayed on your screen
 
 Open browser and go to: http://127.0.0.1:5000/
